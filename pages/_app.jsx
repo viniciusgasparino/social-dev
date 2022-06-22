@@ -8,7 +8,15 @@ const GlobalStyle = createGlobalStyle `
 
   body {
     font-family: 'Roboto', sans-serif;
+    color: #3a3a3a;
   }
+
+  a{
+    color: #8933cd;
+    font-weight: bold;
+    text-decoration: none;
+  }
+
 `
 
 function App ({ Component, pageProps }) {
