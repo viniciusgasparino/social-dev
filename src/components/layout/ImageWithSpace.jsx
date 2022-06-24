@@ -16,7 +16,6 @@ const StyledImage = styled.div `
   @media (max-width: ${WIDTH_BREAK}) {
     display: none;
   }
-
 `
 
 const StyledContainer = styled.div `
@@ -33,17 +32,22 @@ const StyledContainer = styled.div `
 
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  height: calc(100vh - 60px);
+  overflow-y: auto;
 
+  &:before,&:after {
+    content: "";
+    margin: auto;
+  }
 `
 
 function ImageWithSpace({children,image}){
   return(
     <StyledFlex>
-        <StyledImage image={image}/>
-        <StyledContainer>
-          {children}
-        </StyledContainer>
+      <StyledImage image={image}/>
+      <StyledContainer>
+        {children}
+      </StyledContainer>
     </StyledFlex>
   )
 }
