@@ -46,7 +46,7 @@ function ImageWithSpace({children,image}){
     <StyledFlex>
       <StyledImage image={image}/>
       <StyledContainer>
-        {children}
+        {children}        
       </StyledContainer>
     </StyledFlex>
   )
