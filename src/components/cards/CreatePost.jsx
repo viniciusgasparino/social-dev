@@ -3,11 +3,10 @@ import H4 from "../tipografy/H4"
 import TextArea from "../inputs/TextArea"
 import Button from "../inputs/Button"
 
-
 const PostContainer = styled.div`
   background-color: ${props => props.theme.white};
   padding: 20px 40px;
-
+          
   @media (max-width: 500px) {
     padding: 20px;
   }
@@ -17,6 +16,7 @@ const Title = styled.div`
   font-weight: bold;
   text-align: center;
 `
+
 const TextContainer = styled.div`
   margin: 20px 0;
   width: 100%;
@@ -29,7 +29,6 @@ const BottomContainer = styled.div`
   @media (max-width: 500px) {
     flex-direction: column-reverse;
   }
-
 `
 
 const BottomText = styled.p`

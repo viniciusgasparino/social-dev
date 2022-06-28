@@ -1,8 +1,12 @@
 import styled from "styled-components"
 
 const StyledContainer = styled.div`
-  display:flex;
+  display: flex;
   justify-content: center;
+
+  @media (max-width: 700px) {
+    padding: 10px;
+  }
 `
 
 const StyledChildren = styled.div`
@@ -15,9 +19,8 @@ function Container ({children}){
     <div>
       <StyledContainer>
         <StyledChildren>
-          
+          {children}    
         </StyledChildren>
-        {children}
       </StyledContainer>
     </div>
   )
