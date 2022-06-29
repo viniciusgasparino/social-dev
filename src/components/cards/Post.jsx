@@ -5,7 +5,7 @@ const PostContainer = styled.div`
   padding: 20px;
   border-radius: 10px;
 `
-
+        
 const StyledUserName = styled.p`
   font-weight: bold;
   font-size: 18px;
