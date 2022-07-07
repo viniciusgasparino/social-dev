@@ -7,7 +7,7 @@ export const signupUser = async (body) => {
     const user = {        
       ...body,
       password: hashPassword(body.password)
-    }
+    }       
     const dbUser = await User.create(user)
     return dbUser
   }catch(err){
@@ -24,12 +24,12 @@ export const login = async (body) => {
       ]
     })
 
-    if(!user) throw new Error("user no found")
-    const passwordIsCorrect = comparePassword(body.password, user.password) 
+    if(!user) throw new Error("not found")
+    const passwordIsCorrect = comparePassword(body.password,user.password) 
     if(!passwordIsCorrect) throw new Error("password incorrect")
 
     return user
-  } catch (error) {
+  } catch (err) {
     throw err
   }
 }
