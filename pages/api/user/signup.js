@@ -22,7 +22,7 @@ signup.post(validate({body:postSchema}), async(req,res) => {
     req.session.user = {
       id: user._id,
       user: user.user
-    }
+    }         
     await req.session.save()
     res.status(201).json({ok: true});
   }catch(err){

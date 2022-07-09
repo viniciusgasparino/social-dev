@@ -1,3 +1,4 @@
+import { useState } from "react"
 import styled from "styled-components"
 import Link from "next/link"
 import ImageWithSpace from "../src/components/layout/ImageWithSpace"
@@ -24,18 +25,55 @@ const Text = styled.p `
 `
 
 function SignupPage(){
+  const [firstName,setFirstName] = useState("")
+  const [lastName,setLastName] = useState("")
+  const [user,setUser] = useState("")
+  const [email,setEmail] = useState("")
+  const [password,setPassword] = useState("")
+
+  const handleName = (event) => {
+    setFirstName(event.target.value)
+  }
+
+  const handleLastName = (event) => {
+    setLastName(event.target.value)
+  }
+
+  const handleUser = (event) => {
+    setUser(event.target.value)
+  }
+
+  const handleEmail = (event) => {
+    setEmail(event.target.value)
+  }
+
+  const handlePassword = (event) => {
+    setPassword(event.target.value)
+  }
+
+  const handleForm = (event) => {
+    event.preventDefault()
+    console.log({
+      firstName,
+      lastName,
+      user,
+      email,
+      password
+    })
+  }
+
   return(
     <ImageWithSpace>
       <H1># socialDev</H1>
       <H4>Tudo que acontece no mundo dev esta aqui</H4>
       <FormContainer>     
         <H2>Cira sua Conta</H2>
-        <Form>
-          <Input label="nome" type="text"/>
-          <Input label="sobrenome" type="text"/>
-          <Input label="Usuário" type="text"/>
-          <Input label="Email ou usuario" type="email"></Input>
-          <Input label="Senha" type="password" />
+        <Form onSubmit={handleForm}>
+          <Input label="nome" type="text" onChange={handleName}/>
+          <Input label="sobrenome" type="text" onChange={handleLastName}/>
+          <Input label="Usuário" type="text" onChange={handleUser}/>
+          <Input label="Email ou usuario" type="email" onChange={handleEmail}></Input>
+          <Input label="Senha" type="password" onChange={handlePassword}/>
           <Button>Entrar</Button>
         </Form>
         <Text>Já possui uma conta?<Link href="/Login">Faça seu Login</Link></Text>
