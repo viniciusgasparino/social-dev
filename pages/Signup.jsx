@@ -1,4 +1,7 @@
 import { useState } from "react"
+import {useForm} from "react-hook-form"
+import {joiResolver} from "@hookform/resolvers/joi"
+import {signupSchema} from "../modules/user/user.schema"
 import styled from "styled-components"
 import Link from "next/link"
 import ImageWithSpace from "../src/components/layout/ImageWithSpace"
@@ -25,42 +28,15 @@ const Text = styled.p `
 `
 
 function SignupPage(){
-  const [firstName,setFirstName] = useState("")
-  const [lastName,setLastName] = useState("")
-  const [user,setUser] = useState("")
-  const [email,setEmail] = useState("")
-  const [password,setPassword] = useState("")
+  const {register,handleSubmit,formState:{errors}} = useForm({
+    resolver: joiResolver(signupSchema)
+  })
 
-  const handleName = (event) => {
-    setFirstName(event.target.value)
+  const handleForm = (data) => {
+    console.log(data)  
   }
 
-  const handleLastName = (event) => {
-    setLastName(event.target.value)
-  }
-
-  const handleUser = (event) => {
-    setUser(event.target.value)
-  }
-
-  const handleEmail = (event) => {
-    setEmail(event.target.value)
-  }
-
-  const handlePassword = (event) => {
-    setPassword(event.target.value)
-  }
-
-  const handleForm = (event) => {
-    event.preventDefault()
-    console.log({
-      firstName,
-      lastName,
-      user,
-      email,
-      password
-    })
-  }
+  console.log(errors)
 
   return(
     <ImageWithSpace>
@@ -68,13 +44,13 @@ function SignupPage(){
       <H4>Tudo que acontece no mundo dev esta aqui</H4>
       <FormContainer>     
         <H2>Cira sua Conta</H2>
-        <Form onSubmit={handleForm}>
-          <Input label="nome" type="text" onChange={handleName}/>
-          <Input label="sobrenome" type="text" onChange={handleLastName}/>
-          <Input label="Usuário" type="text" onChange={handleUser}/>
-          <Input label="Email ou usuario" type="email" onChange={handleEmail}></Input>
-          <Input label="Senha" type="password" onChange={handlePassword}/>
-          <Button>Entrar</Button>
+        <Form onSubmit={handleSubmit(handleForm)}>
+          <Input label="nome" {...register("firstName")}/>
+          <Input label="sobrenome" {...register("lastName")}/>
+          <Input label="Usuário" {...register("user")} />
+          <Input label="Email ou usuario" {...register("email")}></Input>
+          <Input label="Senha" type="password" {...register("password")}/>
+          <Button type="submit">Entrar</Button>
         </Form>
         <Text>Já possui uma conta?<Link href="/Login">Faça seu Login</Link></Text>
       </FormContainer>        
