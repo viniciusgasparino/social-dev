@@ -3,7 +3,7 @@ import {useForm} from "react-hook-form"
 import {joiResolver} from "@hookform/resolvers/joi"
 import {signupSchema} from "../modules/user/user.schema"
 import styled from "styled-components"
-import Link from "next/link"
+import Link from "next/link"            
 import ImageWithSpace from "../src/components/layout/ImageWithSpace"
 import H1 from "../src/components/tipografy/H1"
 import H2 from "../src/components/tipografy/H2"
@@ -22,7 +22,7 @@ const Form = styled.form `
   margin: 20px 0;
   gap: 20px;
 `
-
+        
 const Text = styled.p `
   text-align: center;
 `
@@ -36,8 +36,6 @@ function SignupPage(){
     console.log(data)  
   }
 
-  console.log(errors)
-
   return(
     <ImageWithSpace>
       <H1># socialDev</H1>
@@ -45,12 +43,12 @@ function SignupPage(){
       <FormContainer>     
         <H2>Cira sua Conta</H2>
         <Form onSubmit={handleSubmit(handleForm)}>
-          <Input label="nome" {...register("firstName")}/>
-          <Input label="sobrenome" {...register("lastName")}/>
-          <Input label="Usuário" {...register("user")} />
-          <Input label="Email ou usuario" {...register("email")}></Input>
-          <Input label="Senha" type="password" {...register("password")}/>
-          <Button type="submit">Entrar</Button>
+          <Input label="nome" {...register("firstName")} error={errors.firstName}/>
+          <Input label="sobrenome" {...register("lastName")} error={errors.lastName}/>
+          <Input label="Usuário" {...register("user")} error={errors.user}/>
+          <Input label="Email ou usuario" {...register("email")} error={errors.email}></Input>
+          <Input label="Senha" type="password" {...register("password")} error={errors.password}/>
+          <Button type="submit" disabled={Object.keys(errors).length>0}>Cadastrar</Button>
         </Form>
         <Text>Já possui uma conta?<Link href="/Login">Faça seu Login</Link></Text>
       </FormContainer>        

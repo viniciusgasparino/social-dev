@@ -6,6 +6,8 @@ const theme = {
   background: "lightgrey",
   black: "#3a3a3a",
   white: "#ffffff",
+  error: "red",
+  disabled: "grey",
 }
 
 export default theme

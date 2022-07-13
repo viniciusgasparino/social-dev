@@ -5,9 +5,7 @@ import validate from "../../../lib/middlewares/validation"
 import {signupUser} from "../../../modules/user/user.service"
 import {signupSchema} from "../../../modules/user/user.schema"
 import {ironConfig} from "../../../lib/middlewares/ironSession"
-
-
-
+        
 
 const signup = createHandler()    
 

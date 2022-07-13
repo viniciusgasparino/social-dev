@@ -1,7 +1,6 @@
 import {hashPassword,comparePassword} from "../../utils/bcrypt"
 import User from "./user.model"
 
-
 export const signupUser = async (body) => {
   try{
     const user = {        
@@ -14,7 +13,7 @@ export const signupUser = async (body) => {
     throw err
   }
 } 
-
+        
 export const login = async (body) => {
   try {
     const user = await User.findOne({
