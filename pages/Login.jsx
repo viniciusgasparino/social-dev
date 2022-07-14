@@ -30,7 +30,7 @@ function LoginPage(){
       <H4>Tudo que acontece no mundo dev esta aqui</H4>
       <FormContainer>     
         <H2>Entre em sua conta</H2>
-        <Form>
+        <Form>          
           <Input label="Email ou usuario" type="email"></Input>
           <Input label="Senha" type="password" />
           <Button>Entrar</Button>

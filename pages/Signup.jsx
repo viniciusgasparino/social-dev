@@ -22,13 +22,13 @@ const Form = styled.form `
   margin: 20px 0;
   gap: 20px;
 `
-        
+                
 const Text = styled.p `
   text-align: center;
 `
 
 function SignupPage(){
-  const {register,handleSubmit,formState:{errors}} = useForm({
+  const {control,handleSubmit,formState:{errors}} = useForm({
     resolver: joiResolver(signupSchema)
   })
 
@@ -36,20 +36,20 @@ function SignupPage(){
     console.log(data)  
   }
 
-  return(
+  return(                     
     <ImageWithSpace>
       <H1># socialDev</H1>
       <H4>Tudo que acontece no mundo dev esta aqui</H4>
       <FormContainer>     
         <H2>Cira sua Conta</H2>
         <Form onSubmit={handleSubmit(handleForm)}>
-          <Input label="nome" {...register("firstName")} error={errors.firstName}/>
-          <Input label="sobrenome" {...register("lastName")} error={errors.lastName}/>
-          <Input label="Usuário" {...register("user")} error={errors.user}/>
-          <Input label="Email ou usuario" {...register("email")} error={errors.email}></Input>
-          <Input label="Senha" type="password" {...register("password")} error={errors.password}/>
+          <Input label="nome" name="firstName" control={control}/>
+          <Input label="sobrenome" name="lastName" control={control}/>
+          <Input label="Usuário" name="user" control={control}/>
+          <Input label="Email ou usuario" name="email" control={control}></Input>
+          <Input label="Senha" type="password" name="password" control={control}/>
           <Button type="submit" disabled={Object.keys(errors).length>0}>Cadastrar</Button>
-        </Form>
+        </Form>   
         <Text>Já possui uma conta?<Link href="/Login">Faça seu Login</Link></Text>
       </FormContainer>        
     </ImageWithSpace>
