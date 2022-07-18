@@ -4,12 +4,9 @@ import createHandler from "../../../lib/middlewares/nextConnect"
 import validate from "../../../lib/middlewares/validation"
 import {login} from "../../../modules/user/user.service"
 import {ironConfig} from "../../../lib/middlewares/ironSession"
+import {loginSchema} from "../../../modules/user/user.schema"
 
-const loginSchema = Joi.object({    
-  userOremail: Joi.string().required(),
-  password: Joi.string().required()
-})
-                 
+               
 const handler = createHandler()   
 
 handler.post(validate({body: loginSchema}), async(req,res) => { 
@@ -19,11 +16,10 @@ handler.post(validate({body: loginSchema}), async(req,res) => {
       id: user._id,
       user: user.user
     }
-    await req.session.save({ok: true})
-    res.send(user)
+    await req.session.save()
+    res.send({ok: true})
   }catch(err){
-    console.error(err)
-    throw err
+    return res.status(400).send(err.message)
   }
 })
 

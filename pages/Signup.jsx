@@ -44,7 +44,7 @@ function SignupPage(){
     }catch(err){
       if(err.response.data.code===11000){
           setError(err.response.data.duplicatedKey,{
-            type: "duplicated"
+            type: "duplicate"
           })
       } 
     } 
