@@ -28,7 +28,7 @@ export const login = async (body) => {
     if(!passwordIsCorrect) throw new Error("password incorrect")
 
     return user
-  } catch (err) {
+  }catch (err) {
     throw err
   }
 }

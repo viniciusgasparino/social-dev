@@ -33,7 +33,7 @@ function SignupPage(){
   const router = useRouter()
   const {control,handleSubmit,formState:{errors},setError} = useForm({
     resolver: joiResolver(signupSchema)
-  })
+  })      
 
   const handleForm = async(data) => {
     try{
@@ -41,7 +41,7 @@ function SignupPage(){
      if(status===201){
         router.push("/")
      } 
-    }catch(err){
+    }catch(err){      
       if(err.response.data.code===11000){
           setError(err.response.data.duplicatedKey,{
             type: "duplicate"
@@ -49,7 +49,7 @@ function SignupPage(){
       } 
     } 
   }
-
+      
   return(                     
     <ImageWithSpace>
       <H1># socialDev</H1>

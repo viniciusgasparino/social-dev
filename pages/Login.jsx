@@ -44,14 +44,14 @@ function LoginPage(){
       if(response.data==="password incorrect"){
            setError("password",{
             message: "A senha está incorreta"
-           })
+           })       
       }
       else if(response.data==="not found"){
-        setError("userOrEmail",{
-          message: "Usuário ou email não encontrado"
+        setError("userOremail",{
+          message: "Usuário ou email não encontrado"    
          })
       }
-      console.log(data)
+      console.log(response.data)
     }
   }
 
@@ -65,7 +65,7 @@ function LoginPage(){
           <Input label="Email ou usuario" name="userOremail" control={control}></Input>
           <Input label="Senha" type="password" name="password" control={control}/>
           <Button type="submit" disabled={Object.keys(errors).length>0}>Entrar</Button>
-        </Form>
+        </Form>               
         <Text>Não possui uma conta?<Link href="/Signup">Faça seu cadastro</Link></Text>
       </FormContainer>        
     </ImageWithSpace>
