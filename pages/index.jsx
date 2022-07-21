@@ -34,7 +34,7 @@ const PostContainer = styled.div`
 `
 
 function HomePage ({user}) {    
-        
+              
   return (
     <>
       <Navbar/>
@@ -57,14 +57,14 @@ function HomePage ({user}) {
   )       
 }
 
-export const getServerSideProps = withIronSessionSsr(
+export const getServerSideProps = withIronSessionSsr(   
   async function getServerSideProps({req}){
     const user = req.session.user
 
     if(!user){
       return{
         redirect: {
-          permanent: false,
+          permanent: false,     
           destination: "/Login"
         }
       }

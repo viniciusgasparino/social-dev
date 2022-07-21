@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import axios from "axios"
-import {userRouter} from "next/router"
+import {useRouter} from "next/router"
 
 const StyledNavbar = styled.div `
   background-color: ${props => props.theme.white};
@@ -23,10 +23,10 @@ const StyledLogout = styled.a`
 `
 
 function Navbar(){
-  const router = userRouter
+  const router = useRouter()
 
   const handleLogout = async() => {
-    await axios.post(`${proces.env.NEXT_PUBLIC_API_URL}/api/user/logout`)
+    await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/user/logout`)
     router.push("/")
   }
 

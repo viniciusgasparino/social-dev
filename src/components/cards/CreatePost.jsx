@@ -32,7 +32,7 @@ const BottomContainer = styled.div`
 `
 
 const BottomText = styled.p`
-  flex: 1;
+  flex: 1;      
 `
 
 function CreatePost({username}){
@@ -49,5 +49,5 @@ function CreatePost({username}){
     </PostContainer>
   )
 }
-
+                    
 export default CreatePost
