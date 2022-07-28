@@ -47,20 +47,17 @@ function HomePage ({user}) {
         <Container>
           <CreatePost username={user.user}/>
           <LastPostText>Últimas Postagens</LastPostText>
-          <RefreshPostsContainer>
-            <RefreshPosts>Carregar novas Postagens</RefreshPosts>
-          </RefreshPostsContainer>  
-            <PostContainer>
-              {
-               data?.map(post => 
-                <Post key={post._id}
-                  text={post.text}
-                  user={post.createdBy.user}
-                  date={post.createdDate}
-                />
-               )
-              } 
-            </PostContainer>
+          <PostContainer>
+            {
+              data?.map(post => 
+              <Post key={post._id}
+                text={post.text}
+                user={post.createdBy.user}
+                date={post.createdDate}
+              />
+              )
+            } 
+          </PostContainer>
         </Container>
       </Content>
     </>
