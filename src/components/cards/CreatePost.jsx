@@ -5,9 +5,8 @@ import axios from "axios"
 import {useSWRConfig} from "swr"
 import H4 from "../tipografy/H4"
 import ControlledTextArea from "../inputs/ControlledTextArea"
-import TextArea from "../inputs/TextArea"
 import Button from "../inputs/Button"
-import {createPostSchema} from "../../../modules/post.schema"
+import {createPostSchema} from "../../../modules/post/post.schema"
 
 const PostContainer = styled.div`
   background-color: ${props => props.theme.white};

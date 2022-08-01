@@ -1,4 +1,3 @@
-
 import styled from "styled-components"
 import {withIronSessionSsr} from "iron-session/next"
 import axios from "axios"
@@ -39,7 +38,6 @@ const fetcher = url => axios.get(url).then(res => res.data)
 
 function HomePage ({user}) {  
   const {data} = useSWR(`${process.env.NEXT_PUBLIC_API_URL}/api/post`,fetcher)
-
   return (
     <>
       <Navbar/>
@@ -68,7 +66,6 @@ function HomePage ({user}) {
 export const getServerSideProps = withIronSessionSsr(   
   async function getServerSideProps({req}){
     const user = req.session.user
-
     if(!user){
       return{
         redirect: {
