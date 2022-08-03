@@ -1,4 +1,3 @@
-import { options } from "joi"
 import {useState,useRef,useEffect} from "react"
 import styled from "styled-components"
 
@@ -46,20 +45,20 @@ const Menu = ({options = []}) => {
     }
 
   },[menuRef])
-
+                            
   return(
     <StyledContainerMenu>
       <Dots src="/three-dots.svg" height="20px" onClick={()=>setShow(!show)}/>
       <StyledMenu show={show} ref={menuRef} onBlur={()=>setShow(false)}>
          {
-          options.map((option,pos)=>{
+          options.map((option,pos)=>
             <StyledOption 
               key={`menu-option-${pos}`}
               onClick={option.onClick}
           >
             {option.text}
             </StyledOption>  
-          })
+          )
          } 
       </StyledMenu>
     </StyledContainerMenu>

@@ -49,9 +49,11 @@ function HomePage ({user}) {
             {
               data?.map(post => 
               <Post key={post._id}
-                text={post.text}
+                text={post.text}            
                 user={post.createdBy.user}
                 date={post.createdDate}
+                isOwner={post.createdBy._id===user.id}
+                id={post._id}
               />
               )
             } 
