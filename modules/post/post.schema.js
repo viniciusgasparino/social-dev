@@ -1,6 +1,6 @@
 import Joi from "joi"
+
 import joiObjectid from "joi-objectid"
-import JoiObjectid from "joi-objectid"
 Joi.objectId = joiObjectid(Joi)
 
 export const createPostSchema = Joi.object({
@@ -9,5 +9,10 @@ export const createPostSchema = Joi.object({
 
 
 export const deletePostSchema = Joi.object({
-  id: Joi.ObjectId().required()
+  id: Joi.objectId().required()
+})
+
+export const editPostSchema = Joi.object({
+  id: Joi.objectId().required(),
+  text: Joi.string().required().max(256)
 })

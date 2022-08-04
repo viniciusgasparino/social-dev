@@ -53,7 +53,7 @@ function HomePage ({user}) {
                 user={post.createdBy.user}
                 date={post.createdDate}
                 isOwner={post.createdBy._id===user.id}
-                id={post._id}
+                id={post._id}   
               />
               )
             } 
