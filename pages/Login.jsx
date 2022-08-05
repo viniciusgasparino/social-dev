@@ -64,7 +64,7 @@ function LoginPage(){
         <Form onSubmit={handleSubmit(onSubmit)}>          
           <Input label="Email ou usuario" name="userOremail" control={control}></Input>
           <Input label="Senha" type="password" name="password" control={control}/>
-          <Button type="submit" disabled={Object.keys(errors).length>0}>Entrar</Button>
+          <Button loading={true} type="submit" disabled={Object.keys(errors).length>0}>Entrar</Button>
         </Form>               
         <Text>Não possui uma conta?<Link href="/Signup">Faça seu cadastro</Link></Text>
       </FormContainer>        
