@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import {useState} from "react"
 import {useForm} from "react-hook-form"
 import {joiResolver} from "@hookform/resolvers/joi"
 import axios from "axios"
@@ -41,6 +42,7 @@ const BottomText = styled.p`
 `
 
 function CreatePost({username}){
+  const [showLoading,setShowLoading] = useState(false)
   const {mutate} = useSWRConfig()
   const {control,handleSubmit,formState:{isValid},reset} = useForm({
     resolver: joiResolver(createPostSchema),
@@ -48,11 +50,14 @@ function CreatePost({username}){
   })
 
   const onSubmit = async(data) => {
+    setShowLoading(true)
     const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/post`,data)
     if(response.status===201){
-        reset()
+        setShowLoading(false)
+        reset()   
         mutate(`${process.env.NEXT_PUBLIC_API_URL}/api/post`)
     }
+    
   }
 
   return(
@@ -66,15 +71,20 @@ function CreatePost({username}){
             control={control}
             name="text"
             maxLength="256"
-          />
+          />        
         </TextContainer>
         <BottomContainer>
           <BottomText>A sua mensagem será publica</BottomText>
-          <Button disabled={!isValid}>Postar mensagem</Button>
+          <Button 
+            disabled={!isValid}
+            loading={showLoading}
+          >
+            Postar mensagem
+          </Button>
         </BottomContainer>
       </form>
     </PostContainer>
   )
 }
-                    
+                         
 export default CreatePost

@@ -1,4 +1,4 @@
-import { useState } from "react"
+import {useState} from "react"
 import {useForm} from "react-hook-form"
 import {joiResolver} from "@hookform/resolvers/joi"
 import axios from "axios"
@@ -30,18 +30,21 @@ const Text = styled.p `
 `
 
 function SignupPage(){
+  const [showLoading,setShowLoading] = useState(false)
   const router = useRouter()
   const {control,handleSubmit,formState:{errors},setError} = useForm({
     resolver: joiResolver(signupSchema)
   })      
 
   const handleForm = async(data) => {
+    setShowLoading(true)
     try{
      const {status} = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/user/signup`,data)
      if(status===201){
         router.push("/")
      } 
-    }catch(err){      
+    }catch(err){   
+      setShowLoading(false)   
       if(err.response.data.code===11000){
           setError(err.response.data.duplicatedKey,{
             type: "duplicate"
@@ -62,7 +65,13 @@ function SignupPage(){
           <Input label="Usuário" name="user" control={control}/>
           <Input label="Email ou usuario" name="email" control={control}></Input>
           <Input label="Senha" type="password" name="password" control={control}/>
-          <Button type="submit" disabled={Object.keys(errors).length>0}>Cadastrar</Button>
+          <Button 
+            type="submit" 
+            disabled={Object.keys(errors).length>0}
+            loading={showLoading}
+          >
+            Cadastrar
+          </Button>
         </Form>   
         <Text>Já possui uma conta?<Link href="/Login">Faça seu Login</Link></Text>
       </FormContainer>        
