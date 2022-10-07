@@ -8,7 +8,7 @@ import Container from "../src/components/layout/Container"
 import CreatePost from "../src/components/cards/CreatePost"
 import H3 from "../src/components/tipografy/H3"
 import Post from "../src/components/cards/Post"
-
+      
 const Content = styled.div`
   margin: 50px 0;
 `
@@ -64,7 +64,7 @@ function HomePage ({user}) {
   
   )       
 }
-
+        
 export const getServerSideProps = withIronSessionSsr(   
   async function getServerSideProps({req}){
     const user = req.session.user

@@ -12,7 +12,7 @@ import H2 from "../src/components/tipografy/H2"
 import H4 from "../src/components/tipografy/H4"
 import Button from "../src/components/inputs/Button"
 import Input from "../src/components/inputs/Input"
-
+  
 
 const FormContainer = styled.div `
   margin-top: 60px;
@@ -37,7 +37,6 @@ function SignupPage(){
   })      
 
   const handleForm = async(data) => {
-    setShowLoading(true)
     try{
      const {status} = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/user/signup`,data)
      if(status===201){
@@ -50,7 +49,9 @@ function SignupPage(){
             type: "duplicate"
           })
       } 
-    } 
+    } finally{
+      setShowLoading(false)
+    }
   }
       
   return(                     

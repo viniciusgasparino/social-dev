@@ -38,14 +38,14 @@ function LoginPage(){
 
 
   const onSubmit = async(data) => {
-    setShowLoading(true)
     try{
+      setShowLoading(true)
       const {status} = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/user/login`,data)
       if(status===200){
           router.push("/")
       }
     }catch({response}){
-      setShowLoading(false)
+      
       if(response.data==="password incorrect"){
         setError("password",{
           message: "A senha está incorreta"
@@ -56,7 +56,9 @@ function LoginPage(){
           message: "Usuário ou email não encontrado"    
          })
       }
-      console.log(response.data)
+      
+    } finally{
+      setShowLoading(false)
     }
   }
 
